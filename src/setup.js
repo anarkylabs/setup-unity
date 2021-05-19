@@ -80,7 +80,7 @@ async function installUnityHub() {
             const installerPath = await tc.downloadTool('https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.exe', dest);
             const stats = fs.statSync(installerPath);
             console.log(`7: ${installerPath}, file size ${stats.size}`);
-            await execute(`"${installerPath}" /s`);
+            await execute(installerPath, ['/s']); //execute(`"${installerPath}" /s`);
             console.log('8');
             await execute(`del "${installerPath}"`);
             console.log('9');
@@ -205,6 +205,19 @@ async function execute(command, ignoreReturnCode) {
     console.log(); // new line
     return stdout;
 }
+
+async function execute1(command, args, ignoreReturnCode) {
+    let stdout = '';
+    await exec.exec(command, args, {
+        ignoreReturnCode: ignoreReturnCode,
+        listeners: {
+            stdout: buffer => stdout += buffer.toString()
+        }
+    });
+    console.log(); // new line
+    return stdout;
+}
+
 
 function getInputAsArray(name, options) {
     return core
