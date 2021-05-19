@@ -24,15 +24,16 @@ async function run() {
         console.log("3");
         const unityHubPath = await installUnityHub();
         console.log("4");
-//         const unityPath = await installUnityEditor(unityHubPath, installPath, unityVersion, unityVersionChangeset);
-//         if (unityModules.length > 0) {
-//             await installUnityModules(unityHubPath, unityVersion, unityModules, unityModulesChild);
-//         }
-//         await postInstall();
+        const unityPath = await installUnityEditor(unityHubPath, installPath, unityVersion, unityVersionChangeset);
+        console.log("10");
+        if (unityModules.length > 0) {
+            await installUnityModules(unityHubPath, unityVersion, unityModules, unityModulesChild);
+        }
+        await postInstall();
 
-//         core.setOutput('unity-version', unityVersion);
-//         core.setOutput('unity-path', unityPath);
-//         core.exportVariable('UNITY_PATH', unityPath);
+        core.setOutput('unity-version', unityVersion);
+        core.setOutput('unity-path', unityPath);
+        core.exportVariable('UNITY_PATH', unityPath);
     } catch (error) {
         core.setFailed(error.message);
     }
@@ -80,7 +81,9 @@ async function installUnityHub() {
             const stats = fs.statSync(installerPath);
             console.log(`7: ${installerPath}, file size ${stats.size}`);
             await execute(`"${installerPath}" /s`);
+            console.log('8');
             await execute(`del "${installerPath}"`);
+            console.log('9');
         }
 
     }
