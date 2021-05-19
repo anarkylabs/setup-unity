@@ -16,11 +16,12 @@ async function run() {
 
         console.log("2");
         
-//         if (!unityVersion) {
-//             [unityVersion, unityVersionChangeset] = await findProjectVersion(projectPath);
-//         } else if (!unityVersionChangeset) {
-//             unityVersionChangeset = await findVersionChangeset(unityVersion);
-//         }
+        if (!unityVersion) {
+            [unityVersion, unityVersionChangeset] = await findProjectVersion(projectPath);
+        } else if (!unityVersionChangeset) {
+            unityVersionChangeset = await findVersionChangeset(unityVersion);
+        }
+        console.log("3");
 //         const unityHubPath = await installUnityHub();
 //         const unityPath = await installUnityEditor(unityHubPath, installPath, unityVersion, unityVersionChangeset);
 //         if (unityModules.length > 0) {
