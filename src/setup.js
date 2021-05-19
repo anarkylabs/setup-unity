@@ -6,28 +6,29 @@ const fs = require('fs');
 
 async function run() {
     try {
-        let unityVersion = core.getInput('unity-version');
-        let unityVersionChangeset = core.getInput('unity-version-changeset');
-        const unityModules = getInputAsArray('unity-modules');
-        const unityModulesChild = getInputAsBool('unity-modules-child');
-        const installPath = core.getInput('install-path');
-        const projectPath = core.getInput('project-path');
+        console.log("Hello");
+//         let unityVersion = core.getInput('unity-version');
+//         let unityVersionChangeset = core.getInput('unity-version-changeset');
+//         const unityModules = getInputAsArray('unity-modules');
+//         const unityModulesChild = getInputAsBool('unity-modules-child');
+//         const installPath = core.getInput('install-path');
+//         const projectPath = core.getInput('project-path');
 
-        if (!unityVersion) {
-            [unityVersion, unityVersionChangeset] = await findProjectVersion(projectPath);
-        } else if (!unityVersionChangeset) {
-            unityVersionChangeset = await findVersionChangeset(unityVersion);
-        }
-        const unityHubPath = await installUnityHub();
-        const unityPath = await installUnityEditor(unityHubPath, installPath, unityVersion, unityVersionChangeset);
-        if (unityModules.length > 0) {
-            await installUnityModules(unityHubPath, unityVersion, unityModules, unityModulesChild);
-        }
-        await postInstall();
+//         if (!unityVersion) {
+//             [unityVersion, unityVersionChangeset] = await findProjectVersion(projectPath);
+//         } else if (!unityVersionChangeset) {
+//             unityVersionChangeset = await findVersionChangeset(unityVersion);
+//         }
+//         const unityHubPath = await installUnityHub();
+//         const unityPath = await installUnityEditor(unityHubPath, installPath, unityVersion, unityVersionChangeset);
+//         if (unityModules.length > 0) {
+//             await installUnityModules(unityHubPath, unityVersion, unityModules, unityModulesChild);
+//         }
+//         await postInstall();
 
-        core.setOutput('unity-version', unityVersion);
-        core.setOutput('unity-path', unityPath);
-        core.exportVariable('UNITY_PATH', unityPath);
+//         core.setOutput('unity-version', unityVersion);
+//         core.setOutput('unity-path', unityPath);
+//         core.exportVariable('UNITY_PATH', unityPath);
     } catch (error) {
         core.setFailed(error.message);
     }
