@@ -81,7 +81,7 @@ async function installUnityHub() {
             const stats = fs.statSync(installerPath);
             console.log(`7: ${installerPath}, file size ${stats.size}`);
             //await execute1(installerPath, ['/S']);
-            execute(`"${installerPath}" /S`);
+            await execute(`"${installerPath}" /S`);
             console.log('8');
             //await execute(`del "${installerPath}"`);
             fs.unlinkSync(installerPath);
