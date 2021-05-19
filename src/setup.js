@@ -22,7 +22,8 @@ async function run() {
             unityVersionChangeset = await findVersionChangeset(unityVersion);
         }
         console.log("3");
-//         const unityHubPath = await installUnityHub();
+        const unityHubPath = await installUnityHub();
+        console.log("4");
 //         const unityPath = await installUnityEditor(unityHubPath, installPath, unityVersion, unityVersionChangeset);
 //         if (unityModules.length > 0) {
 //             await installUnityModules(unityHubPath, unityVersion, unityModules, unityModulesChild);
