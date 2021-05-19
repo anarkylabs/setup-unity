@@ -75,7 +75,7 @@ async function installUnityHub() {
         console.log("5");
         if (!fs.existsSync(unityHubPath)) {
             console.log("6");
-            const dest = path.join(tc._getTempDirectory, "UnityHubSetup.exe")
+            const dest = path.join(process.env['RUNNER_TEMP'] || '', "UnityHubSetup.exe")
             const installerPath = await tc.downloadTool('https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.exe', dest);
             console.log(`7: ${installerPath}`);
             await execute(`"${installerPath}" /s`);
