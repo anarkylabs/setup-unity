@@ -83,7 +83,8 @@ async function installUnityHub() {
             //await execute1(installerPath, ['/S']);
             execute(`"${installerPath}" /S`);
             console.log('8');
-            await execute(`del "${installerPath}"`);
+            //await execute(`del "${installerPath}"`);
+            fs.unlinkSync(installerPath);
             console.log('9');
         }
 
