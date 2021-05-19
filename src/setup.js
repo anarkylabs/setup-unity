@@ -6,14 +6,16 @@ const fs = require('fs');
 
 async function run() {
     try {
-        console.log("Hello");
-//         let unityVersion = core.getInput('unity-version');
-//         let unityVersionChangeset = core.getInput('unity-version-changeset');
-//         const unityModules = getInputAsArray('unity-modules');
-//         const unityModulesChild = getInputAsBool('unity-modules-child');
-//         const installPath = core.getInput('install-path');
-//         const projectPath = core.getInput('project-path');
+        console.log("1");
+        let unityVersion = core.getInput('unity-version');
+        let unityVersionChangeset = core.getInput('unity-version-changeset');
+        const unityModules = getInputAsArray('unity-modules');
+        const unityModulesChild = getInputAsBool('unity-modules-child');
+        const installPath = core.getInput('install-path');
+        const projectPath = core.getInput('project-path');
 
+        console.log("2");
+        
 //         if (!unityVersion) {
 //             [unityVersion, unityVersionChangeset] = await findProjectVersion(projectPath);
 //         } else if (!unityVersionChangeset) {
