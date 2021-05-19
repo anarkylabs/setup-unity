@@ -72,8 +72,11 @@ async function installUnityHub() {
     } else if (process.platform === 'win32') {
 
         unityHubPath = 'C:/Program Files/Unity Hub/Unity Hub.exe';
+        console.log("5");
         if (!fs.existsSync(unityHubPath)) {
+            console.log("6");
             const installerPath = await tc.downloadTool('https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.exe');
+            console.log("7");
             await execute(`"${installerPath}" /s`);
             await execute(`del "${installerPath}"`);
         }
